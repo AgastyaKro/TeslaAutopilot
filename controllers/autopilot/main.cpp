@@ -8,7 +8,7 @@
 int main() {
   webots::Robot robot;
 
-  // 🔍 List all available device names for debugging
+  // List all available device names for debugging
   int deviceCount = robot.getNumberOfDevices();
   std::cout << "=== Webots Devices Detected ===" << std::endl;
   for (int i = 0; i < deviceCount; ++i) {
@@ -17,7 +17,7 @@ int main() {
   }
   std::cout << "================================" << std::endl;
 
-  // 🚗 Launch your autopilot
+  // Launch your autopilot
   Autopilot autopilot(robot);
 
   while (robot.step(TIME_STEP) != -1) {
