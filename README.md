@@ -25,7 +25,7 @@ The project is modularly structured to reflect a simplified version of an actual
 
 ### Language & Platform
 
-* **C++17**
+* **C++23**
 * **Webots Simulator** (macOS-compatible, no external dependencies)
 * **Modular architecture** designed for real-time robotics control
 
