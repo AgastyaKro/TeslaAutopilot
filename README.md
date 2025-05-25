@@ -54,8 +54,4 @@ The project is modularly structured to reflect a simplified version of an actual
   * Updates control loop based on camera frames every timestep
   * Modular for extension with more sensors (e.g., radar, GPS)
 
-### Optional Features
-
-* Obstacle avoidance using lidar (requires lidar enablement in Webots)
-* Debug overlay display on camera frames using OpenCV (optional)
 
