@@ -5,7 +5,7 @@ This project implements a Tesla-style autonomous driving system in C++ using the
 
 ## Demo
 
-[![Watch the demo](https://img.youtube.com/vi/hI3DEimlvjg/0.jpg)](https://youtu.be/hI3DEimlvjg)
+[![Watch the demo](https://i.imgur.com/bZp9NdA.png)](https://youtu.be/hI3DEimlvjg)
 
 The vehicle is able to:
 
