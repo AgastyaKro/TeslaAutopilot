@@ -1,92 +1,61 @@
-# TeslaAutopilot
 
-A C++ autonomous vehicle controller built for the Webots simulator. Inspired by Tesla's Autopilot system, this project handles lane following, basic obstacle avoidance, and PID-based control logic for a simulated vehicle in an urban environment.
+# TeslaAutopilot\_CppController
 
----
+This project implements a Tesla-style autonomous driving system in C++ using the Webots robotics simulator. It is a from-scratch, low-level controller that leverages real-time camera and lidar input to follow lane markings, avoid obstacles, and control a virtual vehicle's steering and throttle.
 
-## Features
+## Demo
 
-- Modular `Autopilot` controller architecture  
-- Real-time camera frame processing via `CameraProcessor`  
-- Lidar-based obstacle detection using `ObstacleAvoidance`  
-- PID control for steering and velocity (`PID`)  
-- Simulated city environment (`city.wbt`)  
+[![Watch the demo](https://img.youtube.com/vi/hI3DEimlvjg/0.jpg)](https://youtu.be/hI3DEimlvjg)
 
----
+The vehicle is able to:
 
-## Directory Structure
+* Follow lane markings using onboard camera input
+* Steer proportionally based on curvature and alignment of detected lanes
+* Move forward with basic speed control
+* Avoid static obstacles using lidar input (optional feature toggle)
 
-```
-TeslaAutopilot/
-├── controllers/
-│   └── autopilot/
-│       ├── Autopilot.cpp
-│       ├── Autopilot.hpp
-│       ├── CameraProcessor.cpp
-│       ├── CameraProcessor.hpp
-│       ├── ObstacleAvoidance.cpp
-│       ├── ObstacleAvoidance.hpp
-│       ├── PID.cpp
-│       ├── PID.hpp
-│       ├── utils.hpp
-│       ├── main.cpp
-│       └── Makefile
-├── worlds/
-│   ├── city.wbt
-│   └── .city.wbproj
-```
+## Overview
 
----
+The goal of this project is to simulate an end-to-end self-driving vehicle system using modern C++ and robotics APIs. It emphasizes clarity and control at the system level without relying on high-level frameworks. The codebase interfaces directly with the Webots simulation environment through its C++ API to access sensor data and actuate the vehicle.
 
-## Build & Run
+The project is modularly structured to reflect a simplified version of an actual vehicle stack, including camera processing, control logic, and motion execution.
 
-### 1. Clone the repository
 
-```bash
-git clone git@github.com:AgastyaKro/TeslaAutopilot.git
-cd TeslaAutopilot
-```
+## Implementation
 
-### 2. Build the controller
+### Language & Platform
 
-```bash
-cd controllers/autopilot
-make
-```
+* **C++17**
+* **Webots Simulator** (macOS-compatible, no external dependencies)
+* **Modular architecture** designed for real-time robotics control
 
-### 3. Run the simulation
+### Core Components
 
-- Open Webots
-- Load `worlds/city.wbt`
-- Press the play button to begin the simulation
+* **CameraProcessor**
 
----
+  * Extracts grayscale image from onboard camera
+  * Applies basic thresholding and filtering to detect yellow lane lines
+  * Estimates lane center offset for steering decisions
 
-## Dependencies
+* **AutopilotController**
 
-- Webots (tested on R2023+)
-- C++17 or newer
-- GNU Make
+  * Reads sensor input (camera, optionally lidar)
+  * Calls PID steering and velocity controllers
+  * Sends target speed and steering angle to the motors
 
----
+* **Motor & Steering Interface**
 
-## TODO
+  * Uses `webots::Motor` API to drive wheels and steer
+  * Parameters such as max speed, turn ratio, and update timestep are tunable
 
-- [ ] Add lane detection logic to `CameraProcessor`
-- [ ] Improve steering control using dynamic PID tuning
-- [ ] Integrate velocity control based on Lidar feedback
-- [ ] Add unit tests for all modules
-- [ ] Add logging and visual debugging utilities
+* **Main Simulation Loop**
 
----
+  * Synchronously steps the Webots simulation
+  * Updates control loop based on camera frames every timestep
+  * Modular for extension with more sensors (e.g., radar, GPS)
 
-## License
+### Optional Features
 
-This project is licensed under the MIT License.
+* Obstacle avoidance using lidar (requires lidar enablement in Webots)
+* Debug overlay display on camera frames using OpenCV (optional)
 
----
-
-## Author
-
-**Agastya Krothapalli**  
-GitHub: [@AgastyaKro](https://github.com/AgastyaKro)
