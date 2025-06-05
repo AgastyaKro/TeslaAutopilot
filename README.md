@@ -1,7 +1,7 @@
 
 # Car Autopilot C++ Controller
 
-This project implements a Tesla-style autonomous driving system in C++ using the Webots robotics simulator. It is a from-scratch, low-level controller that leverages real-time camera and lidar input to follow lane markings, avoid obstacles, and control a virtual vehicle's steering and throttle.
+This project implements a Car autonomous driving system in C++ using the Webots robotics simulator. It is a from-scratch, low-level controller that leverages real-time camera and lidar input to follow lane markings, avoid obstacles, and control a virtual vehicle's steering and throttle.
 
 ## Demo
 
